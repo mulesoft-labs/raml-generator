@@ -5,6 +5,7 @@
   "main": "raml-generator.js",
   "files": [
     "raml-generator.js",
+    "lib/",
     "bin/",
     "LICENSE"
   ],

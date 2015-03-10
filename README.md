@@ -40,7 +40,7 @@ var generate = generator({
 Inside the Handlebars templates, the [RAML interface](https://github.com/mulesoft-labs/js-raml-object-interface) is exposed as Handlebars data.
 
 ```hbs
-var baseUri = {{stringify @getBaseUri}}
+var baseUri = {{stringify (@getBaseUri)}}
 ```
 
 The user data is automatically provided as the Handlebars compile context.

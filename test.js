@@ -32,4 +32,20 @@ describe('raml generator', function () {
       }
     }).files.out).to.equal('get/post/')
   })
+
+  describe('helpers', function () {
+    describe('json', function () {
+      it('should stringify', function () {
+        var generate = generator({
+          templates: {
+            out: '{{json (@getBaseUri)}}'
+          }
+        })
+
+        expect(generate({
+          baseUri: 'http://example.com'
+        }).files.out).to.equal('"http://example.com"')
+      })
+    })
+  })
 })

@@ -33,7 +33,7 @@ function bin (generator, pkg, argv) {
     .describe('d', 'Provide the path to JSON package information')
     .parse(argv)
 
-  return ramlParser.loadFile(opts._[0])
+  return ramlParser.loadFile(opts._[2])
     .then(function (raml) {
       return transform(raml)
     })

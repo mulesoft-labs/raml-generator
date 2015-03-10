@@ -27,7 +27,7 @@ var generator = require('raml-generator')
 
 var generate = generator({
   templates: {
-    'index.js': fs.readFileSync(__dirname + '/templates/index.js.hbs')
+    'index.js': fs.readFileSync(__dirname + '/templates/index.js.hbs', 'utf8')
   },
   helpers: {
     stringify: require('javascript-stringify')

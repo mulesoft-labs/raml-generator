@@ -1,0 +1,66 @@
+{
+  "name": "raml-generator",
+  "version": "0.0.0",
+  "description": "Generate files from a RAML document and Handlebars templates",
+  "main": "raml-generator.js",
+  "files": [
+    "raml-generator.js",
+    "bin/",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "standard",
+    "test-spec": "mocha -R spec --bail",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --bail",
+    "test": "npm run lint && npm run test-cov"
+  },
+  "standard": {
+    "ignore": [
+      "coverage/**",
+      "node_modules/**",
+      "bower_components/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mulesoft-labs/raml-generator.git"
+  },
+  "keywords": [
+    "raml",
+    "object",
+    "json",
+    "standard",
+    "interface"
+  ],
+  "author": "MuleSoft, Inc.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mulesoft-labs/raml-generator/issues"
+  },
+  "homepage": "https://github.com/mulesoft-labs/raml-generator",
+  "devDependencies": {
+    "chai": "^2.0.0",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0",
+    "pre-commit": "^1.0.6",
+    "standard": "^2.1.1"
+  },
+  "dependencies": {
+    "camel-case": "^1.1.1",
+    "constant-case": "^1.1.0",
+    "es6-promise": "^2.0.1",
+    "handlebars": "^3.0.0",
+    "indent-string": "^1.2.1",
+    "lower-case": "^1.1.2",
+    "param-case": "^1.1.1",
+    "pascal-case": "^1.1.0",
+    "raml-object-interface": "^0.1.0",
+    "raml-object-standard": "0.0.8",
+    "raml-parser": "^0.8.10",
+    "snake-case": "^1.1.1",
+    "thenify": "^3.1.0",
+    "upper-case": "^1.1.2",
+    "xtend": "^4.0.0",
+    "yargs": "^3.5.3"
+  }
+}

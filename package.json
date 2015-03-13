@@ -50,19 +50,19 @@
     "camel-case": "^1.1.1",
     "constant-case": "^1.1.0",
     "es6-promise": "^2.0.1",
+    "extend": "^2.0.0",
     "handlebars": "^3.0.0",
     "indent-string": "^1.2.1",
     "lower-case": "^1.1.2",
+    "methods": "^1.1.1",
     "mkdirp": "^0.5.0",
+    "object.pick": "^1.1.1",
     "param-case": "^1.1.1",
     "pascal-case": "^1.1.0",
-    "raml-object-interface": "^0.1.0",
-    "raml-object-standard": "0.0.8",
     "raml-parser": "^0.8.10",
     "snake-case": "^1.1.1",
     "thenify": "^3.1.0",
     "upper-case": "^1.1.2",
-    "xtend": "^4.0.0",
     "yargs": "^3.5.3"
   }
 }

@@ -7,7 +7,7 @@ describe('raml generator', function () {
   it('should compile a specification', function () {
     var generate = generator({
       templates: {
-        out: '{{@getBaseUri}}'
+        out: '{{baseUri}}'
       }
     })
 
@@ -19,18 +19,19 @@ describe('raml generator', function () {
   it('should iterate over resources', function () {
     var generate = generator({
       templates: {
-        out: '{{#each @getResources}}{{#each (@getResourceMethods .)}}{{.}}{{..}}{{/each}}{{/each}}'
+        out: '{{#each allResources}}{{#each methods}}{{@key}}{{/each}}{{/each}}'
       }
     })
 
     expect(generate({
-      resources: {
-        '/': {
-          get: null,
-          post: null
-        }
-      }
-    }).files.out).to.equal('get/post/')
+      resources: [{
+        relativeUri: '/',
+        methods: [
+          { method: 'get' },
+          { method: 'post' }
+        ]
+      }]
+    }).files.out).to.equal('getpost')
   })
 
   describe('helpers', function () {
@@ -38,7 +39,7 @@ describe('raml generator', function () {
       it('should stringify', function () {
         var generate = generator({
           templates: {
-            out: '{{json (@getBaseUri)}}'
+            out: '{{json baseUri}}'
           }
         })
 

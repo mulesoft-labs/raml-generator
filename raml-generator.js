@@ -1,7 +1,7 @@
-var xtend = require('xtend')
-var RamlObject = require('raml-object-interface')
+var extend = require('extend')
 var Handlebars = require('handlebars')
 var libHelpers = require('./lib/helpers')
+var libContext = require('./lib/context')
 
 /**
  * Expose the generator.
@@ -15,21 +15,21 @@ module.exports = generator
  * @return {Function}
  */
 function generator (spec) {
-  var helpers = xtend(libHelpers, spec.helpers)
+  var helpers = extend(libHelpers, spec.helpers)
   var partials = compile(spec.partials, helpers)
   var templates = compile(spec.templates, helpers)
   var createFiles = spec.files || templatesToFiles
 
   return function (raml, data) {
-    var context = createContext(raml)
+    var context = libContext(raml)
 
     var options = {
-      data: context,
+      data: data,
       helpers: helpers,
       partials: partials
     }
 
-    var files = createFiles(templates, data, options)
+    var files = createFiles(templates, context, options)
 
     // Create the compile object. We resolve this object instead of just the
     // files so that external utilities have access to the context object. For
@@ -81,21 +81,4 @@ function compile (obj, helpers) {
   }
 
   return templates
-}
-
-/**
- * Create the generator context object.
- *
- * @param  {Object} raml
- * @return {Object}
- */
-function createContext (raml) {
-  var interface = new RamlObject(raml)
-  var context = {}
-
-  Object.keys(RamlObject.prototype).forEach(function (key) {
-    context[key] = interface[key].bind(interface)
-  })
-
-  return context
 }

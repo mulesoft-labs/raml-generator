@@ -8,7 +8,6 @@ var mkdirp = thenify(require('mkdirp'))
 var readFile = thenify(require('fs').readFile)
 var writeFile = thenify(require('fs').writeFile)
 var cwd = process.cwd()
-var transform = require('raml-object-standard/transform/raml-js-parser-08')
 
 /**
  * Expose the `bin` function.
@@ -34,9 +33,6 @@ function bin (generator, pkg, argv) {
     .parse(argv)
 
   return ramlParser.loadFile(opts._[2])
-    .then(function (raml) {
-      return transform(raml)
-    })
     .then(function (raml) {
       var datafile = opts.data && resolve(cwd, opts.data)
 

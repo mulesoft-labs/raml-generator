@@ -74,7 +74,6 @@ function compile (obj, helpers) {
     Object.keys(obj).forEach(function (key) {
       templates[key] = Handlebars.compile(obj[key], {
         noEscape: true,
-        strict: true,
         knownHelpers: helpers
       })
     })

@@ -37,7 +37,7 @@ describe('raml generator', function () {
   it('should support partially conflicting top level resources', function () {
     var generate = generator({
       templates: {
-        out: '{{#each allResources}}{{relativeUri}}{{/each}}'
+        out: '{{#each allResources}}{{relativeUri}} {{originalRelativeUri}}\n{{/each}}'
       }
     })
 
@@ -49,13 +49,19 @@ describe('raml generator', function () {
       }, {
         relativeUri: '/test/{id}/test'
       }]
-    }).files.out).to.equal('/test/{0}/test')
+    }).files.out).to.equal([
+      ' ',
+      '/test /test',
+      '/{0} /{id}',
+      '/test /test',
+      ''
+    ].join('\n'))
   })
 
-  it('should get original uris', function () {
+  it('should support absolute uris', function () {
     var generate = generator({
       templates: {
-        out: '{{#each allResources}}{{originalRelativeUri}}{{/each}}'
+        out: '{{#each allResources}}{{absoluteUri}} {{originalAbsoluteUri}}\n{{/each}}'
       }
     })
 
@@ -67,7 +73,13 @@ describe('raml generator', function () {
       }, {
         relativeUri: '/test/{id}/test'
       }]
-    }).files.out).to.equal('/test/{id}/test')
+    }).files.out).to.equal([
+      ' ',
+      '/test /test',
+      '/test/{0} /test/{id}',
+      '/test/{0}/test /test/{id}/test',
+      ''
+    ].join('\n'))
   })
 
   describe('helpers', function () {

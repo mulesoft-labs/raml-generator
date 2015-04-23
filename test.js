@@ -34,6 +34,24 @@ describe('raml generator', function () {
     }).files.out).to.equal('getpost')
   })
 
+  it('should support partially conflicting top level resources', function () {
+    var generate = generator({
+      templates: {
+        out: '{{#each allResources}}{{relativeUri}}{{/each}}'
+      }
+    })
+
+    expect(generate({
+      resources: [{
+        relativeUri: '/test'
+      }, {
+        relativeUri: '/test/{id}'
+      }, {
+        relativeUri: '/test/{id}/test'
+      }]
+    }).files.out).to.equal('/test/{0}/test')
+  })
+
   describe('helpers', function () {
     describe('json', function () {
       it('should stringify', function () {

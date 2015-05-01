@@ -65,7 +65,7 @@ Apache License 2.0
 [npm-url]: https://npmjs.org/package/raml-generator
 [downloads-image]: https://img.shields.io/npm/dm/raml-generator.svg?style=flat
 [downloads-url]: https://npmjs.org/package/raml-generator
-[travis-image]: https://img.shields.io/travis/mulesoft-labs/js-raml-generator.svg?style=flat
-[travis-url]: https://travis-ci.org/mulesoft-labs/js-raml-generator
-[coveralls-image]: https://img.shields.io/coveralls/mulesoft-labs/js-raml-generator.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/mulesoft-labs/js-raml-generator?branch=master
+[travis-image]: https://img.shields.io/travis/mulesoft-labs/raml-generator.svg?style=flat
+[travis-url]: https://travis-ci.org/mulesoft-labs/raml-generator
+[coveralls-image]: https://img.shields.io/coveralls/mulesoft-labs/raml-generator.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/mulesoft-labs/raml-generator?branch=master

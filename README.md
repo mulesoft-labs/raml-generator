@@ -15,7 +15,7 @@ npm install raml-generator --save
 
 ## Usage
 
-The module accepts a map of Handlebars templates, partials and helpers, and exports a function that can be used to generate files from a [RAML object](https://github.com/mulesoft-labs/raml-object-standard) and user data.
+The module accepts a map of Handlebars templates, partials and helpers, and exports a function that can be used to generate files from a RAML object and user data. For an example module, take a look at the [raml-javascript-generator](https://github.com/mulesoft-labs/raml-javascript-generator).
 
 ### JavaScript Usage
 
@@ -25,7 +25,7 @@ Create the generator function from an object specification. The returned object 
 var fs = require('fs')
 var generator = require('raml-generator')
 
-var generate = generator({
+module.exports = generator({
   templates: {
     'index.js': fs.readFileSync(__dirname + '/templates/index.js.hbs', 'utf8')
   },
@@ -50,11 +50,13 @@ The user data is automatically provided as the Handlebars compile context.
 A `bin` script is provided for you to use with your custom generator. Just require `raml-generator/bin` and pass in the generator function (from above), package information (`package.json`) and `process.argv`.
 
 ```js
+#!/usr/bin/env node
+
 var bin = require('raml-generator/bin')
 
-var generate = /* The generator function */
+var generator = /* The generator function */
 
-bin(generate, require('./package.json'), process.argv)
+bin(generator, require('./package.json'), process.argv)
 ```
 
 ## License

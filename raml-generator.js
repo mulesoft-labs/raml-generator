@@ -1,4 +1,4 @@
-var extend = require('extend')
+var extend = require('xtend')
 var Handlebars = require('handlebars')
 var libHelpers = require('./lib/helpers')
 var libContext = require('./lib/context')

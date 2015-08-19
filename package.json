@@ -47,10 +47,10 @@
     "standard": "^2.1.1"
   },
   "dependencies": {
+    "arrify": "^1.0.0",
     "camel-case": "^1.1.1",
     "constant-case": "^1.1.0",
     "es6-promise": "^2.0.1",
-    "extend": "^2.0.0",
     "handlebars": "^3.0.0",
     "indent-string": "^1.2.1",
     "lower-case": "^1.1.2",
@@ -63,6 +63,7 @@
     "snake-case": "^1.1.1",
     "thenify": "^3.1.0",
     "upper-case": "^1.1.2",
+    "xtend": "^4.0.0",
     "yargs": "^3.5.3"
   }
 }

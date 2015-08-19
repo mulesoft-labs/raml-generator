@@ -2,6 +2,7 @@
 
 var expect = require('chai').expect
 var generator = require('./')
+var context = require('./lib/context')
 
 describe('raml generator', function () {
   it('should compile a specification', function () {
@@ -94,6 +95,46 @@ describe('raml generator', function () {
         expect(generate({
           baseUri: 'http://example.com'
         }).files.out).to.equal('"http://example.com"')
+      })
+    })
+  })
+
+  describe('context', function () {
+    it('should add security to methods', function () {
+      var obj = context({
+        title: 'Test API',
+        securitySchemes: [{
+          oauth_2_0: {
+            type: 'OAuth 2.0',
+            settings: {
+              authorizationUri: 'https://example.com/oauth/authorize',
+              scopes: ['profile', 'history']
+            }
+          }
+        }],
+        resources: [{
+          relativeUri: '/users',
+          methods: [{
+            method: 'get',
+            securedBy: [null, { oauth_2_0: { scopes: ['admin'] } }]
+          }]
+        }]
+      })
+
+      expect(obj.allMethods).to.have.length(1)
+      expect(obj.allResources).to.have.length(2)
+
+      var method = obj.allMethods[0]
+
+      expect(method.securedBy).to.deep.equal([null, 'oauth_2_0'])
+      expect(method.security).to.deep.equal({
+        oauth_2_0: {
+          type: 'OAuth 2.0',
+          settings: {
+            authorizationUri: 'https://example.com/oauth/authorize',
+            scopes: ['admin']
+          }
+        }
       })
     })
   })

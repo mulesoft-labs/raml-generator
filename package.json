@@ -1,6 +1,6 @@
 {
   "name": "raml-generator",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Generate files from a RAML document and Handlebars templates",
   "main": "raml-generator.js",
   "files": [

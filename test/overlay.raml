@@ -1,0 +1,10 @@
+#%RAML 1.0 Overlay
+
+masterRef: api.raml
+
+uses:
+  client: !include ../annotations.raml
+
+/users:
+  get:
+    (client.methodName): getUsers

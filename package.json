@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "files": [
     "bin.js",
+    "bin.d.ts",
     "dist/",
     "custom_typings/",
     "typings.json",

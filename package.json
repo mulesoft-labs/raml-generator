@@ -6,6 +6,7 @@
   "files": [
     "bin.js",
     "bin.d.ts",
+    "annotations.raml",
     "dist/",
     "custom_typings/",
     "typings.json",

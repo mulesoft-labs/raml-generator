@@ -30,7 +30,7 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
   interface Args {
     include: string[]
     data: string
-    output: string
+    out: string
   }
 
   const args = yargs
@@ -61,7 +61,7 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
         .then(data => generator(json, data))
     })
     .then(function (output: GeneratorResult) {
-      return objectToFs(resolve(cwd, args.output), output.files)
+      return objectToFs(resolve(cwd, args.out), output.files)
     })
     .then(function () {
       process.exit(0)

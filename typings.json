@@ -9,7 +9,8 @@
     "yargs": "registry:npm/yargs#3.31.0+20160316010718"
   },
   "ambientDependencies": {
-    "node": "registry:dt/node#4.0.0+20160317120654"
+    "node": "registry:dt/node#4.0.0+20160317120654",
+    "core-js": "registry:dt/core-js"
   },
   "devDependencies": {
     "blue-tape": "registry:npm/blue-tape#0.1.0+20160211003958"

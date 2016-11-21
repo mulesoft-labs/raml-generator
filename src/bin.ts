@@ -31,7 +31,6 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
     include: string[]
     data: string
     out: string
-    expand: boolean
   }
 
   const args = yargs
@@ -45,13 +44,11 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
     .array('include')
     .alias('i', 'include')
     .describe('i', 'Include additional RAML files (E.g. extensions)')
-    .alias('e', 'expand')
-    .describe('e', 'Expand libraries')
     .parse<Args>(argv)
 
   return loadApi(args._[2], args.include || [], { rejectOnErrors: true })
     .then(function (api: any) {
-      const json = api.expand(args.expand ? true : false).toJSON()
+      const json = api.expand(true).toJSON()
 
       if (args.data == null) {
         return Promise.resolve(generator(json))

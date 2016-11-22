@@ -48,7 +48,7 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
 
   return loadApi(args._[2], args.include || [], { rejectOnErrors: true })
     .then(function (api: any) {
-      const json = api.expand().toJSON()
+      const json = api.expand(true).toJSON()
 
       if (args.data == null) {
         return Promise.resolve(generator(json))

@@ -23,8 +23,8 @@ test('raml generator', t => {
 
     const generate = generator({
       templates: {
-        'test.js': function () {
-          return 'success'
+        'test.js': function (api: any) {
+          return 'success: ' + api.title
         }
       }
     });
@@ -32,7 +32,7 @@ test('raml generator', t => {
     parser.loadApi(musicRaml).then(
       function(api: any) {
         const json = api.expand(true).toJSON();
-        t.deepEqual(generate(json).files, { 'test.js': 'success' });
+        t.deepEqual(generate(json).files, { 'test.js': 'success: World Music API' });
 
         t.end()
       }

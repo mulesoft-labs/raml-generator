@@ -3,6 +3,7 @@
   "version": "1.0.0-3",
   "description": "Generate files from a RAML document and template functions",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "bin.js",
     "bin.d.ts",

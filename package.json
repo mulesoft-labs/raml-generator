@@ -19,7 +19,7 @@
     "test-cov": "istanbul cover --print none -x \"*.spec.js\" blue-tape \"dist/**/*.spec.js\" | tap-spec",
     "test-scene": "node test/index.js",
     "test": "npm run lint && npm run build && npm run test-cov && npm run test-scene",
-    "prepublish": "typings install && npm run build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -42,15 +42,18 @@
     "blue-tape": "^0.2.0",
     "istanbul": "^0.4.2",
     "tap-spec": "^4.1.1",
-    "tslint": "^3.2.0",
-    "typescript": "^1.8.9",
-    "typings": "^0.7.9"
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1"
   },
   "dependencies": {
-    "any-promise": "^1.1.0",
+    "@types/blue-tape": "^0.1.31",
+    "@types/mkdirp": "^0.5.2",
+    "@types/node": "^9.6.5",
+    "@types/parse-json": "^4.0.0",
+    "@types/yargs": "^11.0.0",
     "mkdirp": "^0.5.0",
     "parse-json": "^2.2.0",
-    "raml-1-parser": "^1.1",
+    "raml-1-parser": "^1.1.41",
     "thenify": "^3.2.0",
     "yargs": "^4.1.0"
   }

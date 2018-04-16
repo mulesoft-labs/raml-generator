@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "outDir": "dist/",
     "module": "commonjs",
     "declaration": true,
     "noImplicitAny": true,
     "removeComments": true,
     "sourceMap": true,
-    "newLine": "LF"
+    "newLine": "LF",
+    "typeRoots": ["node_modules/@types", "custom_typings"]
   },
   "files": [
     "src/index.ts",
     "src/index.spec.ts",
-    "src/bin.ts",
-    "typings/main.d.ts"
+    "src/bin.ts"
   ]
 }

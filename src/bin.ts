@@ -1,4 +1,3 @@
-import Promise = require('any-promise')
 import thenify = require('thenify')
 import { dirname, resolve } from 'path'
 import { loadApi } from 'raml-1-parser'
@@ -9,8 +8,8 @@ import parseJson = require('parse-json')
 import { Generator, Files, GeneratorResult } from './index'
 
 const mkdirp = thenify(mkdrp)
-const readFile = thenify<string, string, string>(fs.readFile)
-const writeFile = thenify<string, any, void>(fs.writeFile)
+const readFile = thenify(fs.readFile)
+const writeFile = thenify(fs.writeFile)
 
 /**
  * Simple `package.json` interface.
@@ -44,7 +43,7 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
     .array('include')
     .alias('i', 'include')
     .describe('i', 'Include additional RAML files (E.g. extensions)')
-    .parse<Args>(argv)
+    .parse(argv)
 
   return loadApi(args._[2], args.include || [], { rejectOnErrors: true })
     .then(function (api: any) {
@@ -57,8 +56,8 @@ export function bin (generator: Generator, pkg: Pkg, argv: string[]): Promise<vo
       const path = resolve(cwd, args.data)
 
       return readFile(path, 'utf8')
-        .then(contents => parseJson(contents, null, path))
-        .then(data => generator(json, data))
+        .then((contents: any) => parseJson(contents, null, path))
+        .then((data: any) => generator(json, data))
     })
     .then(function (output: GeneratorResult) {
       return objectToFs(resolve(cwd, args.out), output.files)
@@ -96,6 +95,6 @@ function objectToFs (path: string, object: Files) {
           return writeFile(filename, content)
         })
     },
-    mkdirp(path).then(() => undefined)
+    mkdirp(path).then((): any => undefined)
   )
 }

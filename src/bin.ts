@@ -8,8 +8,8 @@ import parseJson = require('parse-json')
 import { Generator, Files, GeneratorResult } from './index'
 
 const mkdirp = thenify(mkdrp)
-const readFile = thenify<string, string, string>(fs.readFile)
-const writeFile = thenify<string, any, void>(fs.writeFile)
+const readFile = thenify(fs.readFile)
+const writeFile = thenify(fs.writeFile)
 
 /**
  * Simple `package.json` interface.

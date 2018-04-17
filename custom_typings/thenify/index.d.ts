@@ -1,3 +1,1 @@
-declare module "thenify" {
-
-}
+declare module "thenify";

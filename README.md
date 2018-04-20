@@ -5,7 +5,7 @@
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
-> Generate files from a RAML document and templates.
+> Generate  files from a RAML document and templates.
 
 ## Installation
 
